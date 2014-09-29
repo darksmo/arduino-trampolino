@@ -1,0 +1,6 @@
+CurveFitting	KEYWORD1
+fit_points	KEYWORD2
+estimate	KEYWORD2
+isCurveFitted	KEYWORD2
+getEstimatedParameter	KEYWORD2
+setParams	KEYWORD2
