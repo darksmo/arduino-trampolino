@@ -1,0 +1,19 @@
+body {
+    font-family: verdana, sans-serif;
+    font-size: 1.3em;
+}
+
+.thumbnail {
+    float: left;
+    padding-left: 1em;
+    cursor: pointer;
+}
+
+#buy {
+    clear: both;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}

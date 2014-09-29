@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="description" content="">
+        <meta name="keywords" content="arduino, diy, electronic, water pourer, liquid pourer, project, open source, easy, tutorial">
+        <title>Trampolino - the arduino-powered liquid pourer</title>
+        <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+        <link type="text/css" rel="stylesheet" href="styles/style.css">
+        <link type="text/css" rel="stylesheet" href="styles/magnific-popup.css">
+        <!--[if lt IE 9]>
+            <link type="text/css" rel="stylesheet" href="styles/style-ie-lte8.css">
+            <script src="js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <section id="intro" class="section-margin">
+            <img class="block-center" alt="arduino uno r3" src="images/arduino.png" />
+            <span class="block-center font-huge">&plus;</span> 
+            <img class="block-center" alt="water bottle and straw" src="images/water-bottle-and-straw.png" />
+            <span class="block-center font-huge">=</span> 
+        </section>
+        <section id="main">
+            <h1>Trampolino</h1>
+            <h2>the automatic, arduino-powered liquid pourer</h2>
+            <br />
+            <iframe class="block-center" width="560" height="315" src="//www.youtube.com/embed/2FzlmzjDDTY" frameborder="0" allowfullscreen></iframe>
+        </section>
+        <section id="features" class="section-margin">
+            <div class="block-fifty">
+                <h3>Manual liquid pouring</h3>
+                <p>
+                    Fill up your desired quantity of liquid directly through the
+                    straw.
+                </p>
+                <p>
+                    Press a button to start pouring, release it to stop pouring.
+                </p>
+            </div>
+            <div class="block-fifty">
+                <h3>Unit of liquid calibration</h3>
+                <p>Trampolino can pour discrete units of liquid automatically.</p>
+                <p>Through the calibration procedure you can teach Trampolino how much liquid corresponds to a unit.</p>
+            </div>
+            <div class="block-fifty">
+                <h3>Automatic liquid pouring</h3>
+                <p>You can instruct Trampolino on quantity, timing and frequency of automatic liquid pouring.</p>
+            </div>
+            <div class="block-fifty">
+                <h3>On-display countdown</h3>
+                <p>Trampolino displays information about the remaining time at which the liquid is going to get poured.</p>
+            </div>
+            <div class="block-fifty">
+                <h3>Open</h3>
+                <p>
+                    No pumps, no big motors, and no secrets. Trampolino hardware and software are open and documented.</p>
+                </p>
+                <p>
+                    Start building your trampolino now!
+                </p>
+            </div>
+        </section>
+        <section id="ingredients" class="section-margin">
+            <h2>Ingredients</h2>
+            <ul>
+                <li><b>Half breadboard</b> (the one that comes with your Arduino kit is fine)</li>
+                <li><b>3</b> push buttons</li>
+                <li><b>1</b> on/off switch</li>
+                <li><b>1</b> capacitor 100&micro;f 25v</li>
+                <li><b>1</b> servo motor</li>
+                <li><b>1</b> led</li>
+                <li><b>5</b> 10K&#8486; resistors</li>
+                <li><b>2</b> 220&#8486; resistors</li>
+                <li><b>1</b> 220K&#8486; resistor</li>
+                <li><b>1</b> 560&#8486; resistor</li>
+                <li><b>1</b> potentiometer (10K&#8486; max resistance)</li>
+                <li><b>1</b> LCD display (Hitachi HD44780 based)</li>
+                <li><b>1</b> transistor</li>
+                <li><b>Long wires</b>. You will be placing some components away
+                from the breadboard. So you'll need to find long cables, or
+                create some. I've soldered thin wires from an ethernet cable
+                together with wires that fit into the breadboard for
+                example. Crocodile wires can also be useful if you intend to use <a href="http://php2.twinner.com.tw/customer/patterson_1/Product/sp6.jpg">this type</a> of push buttons.</li>
+            </ul>
+        </section>
+        <section id="hardware" class="section-margin">
+            <h2>Prepare the Hardware</h2>
+            <h3 class="step">Step 1: insert the straw in the bottle</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/straw-and-bottle-upside-down.png">
+                    <img class="thumbnail" width="150" height="150" src="images/straw-and-bottle-upside-down-thumb.png" alt="straw into bottle upside down"/>
+                </a>
+
+                <p>
+                    Believe it or not, the most complicated part of the project is to insert a straw upside down into an empty plastic bottle.
+                </p>
+                <p>Can you do that?</p>
+                <p>I have heated up the bottom of the plastic bottle with the
+                tip of a how glue gun and penetrated the bottle with the straw
+                when there was enough heat.</p>
+                <p><b>Make sure there is no leak.</b></p>
+                <ul>
+                    <li>Fill the bottle with some water</li>
+                    <li>Close the bottle with its original cap.</li>
+                    <li>Place a finger on the straw.</li>
+                    <li>Squeeze the bottle! no water should come out.</li>
+                </ul>
+            </div>
+
+            <h3 class="step">Step 2: bind motor and straw</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/servo-motor-to-straw.png">
+                    <img class="thumbnail" width="150" height="150" src="images/servo-motor-to-straw-thumb.png" alt="servo motor attached to the straw" />
+                </a>
+                <p>
+                    The next step is binding the arm of the servo motor to the straw.
+                    I've used some tape to do so.
+                </p>
+            </div>
+
+            <h3 class="step">Step 3: add support to the motor</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/bottle-cap-below-servo-motor.png">
+                    <img class="thumbnail" width="150" height="150" src="images/bottle-cap-below-servo-motor-thumb.png" alt="bottle cap below servo motor" />
+                </a>
+                <div>
+                    <p>Depending at what height of the bottle you have managed to attach the straw, you may need to fill the extra space between the bottom of the bottle and the bottom of the servo motor. For example, you can bind the servo motor to the cap of the bottle.</p>
+                </div>
+            </div>
+
+            <h3 class="step">Step 4: build the liquid passing sensor</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/wired-straw.png">
+                    <img class="thumbnail" width="150" height="150" src="images/wired-straw-thumb.png" alt="wires around straw" />
+                </a>
+                <p>Trampolino requires a &quot;liquid passing sensor&quot; at the tip of
+                the straw. This is made up of a couple of wires that close a circuit when the
+                liquid passes through the tip of the straw.</p>
+                <p>Use some tape to bind the two wires at the end of the straw as shown below:</p>
+            </div>
+
+            <h3 class="step">Step 5: liquid passing feedback LED (optional)</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/wired-led.png">
+                    <img class="thumbnail" width="150" height="150" src="images/wired-led-thumb.png" alt="tape arund tip-of-the straw led" />
+                </a>
+                <p>
+                    You can optionally mount a led that will turn on to indicate
+                    whether the liquid is flowing. Just extend the ends of the led
+                    with two wires and bind it to the end of the straw with more
+                    tape.
+                </p>
+            </div>
+            <h3 class="step">End</h3>
+        </section>
+        <section id="electronics" class="section-margin">
+            <h2>Connect Wires and Components</h2>
+            <p>
+                We are about to deal with Trampolino electronics. A step-by-step
+                guide is about to begin, but don't worry if you get lost. You
+                can refer to the <b>schematic</b> and the <b>breadboard connections</b> below at any time to double check
+                the connections and see where you are at.
+            </p>
+
+            <div class="image-wrapper no-border">
+                <a class="image-popup-no-margins" target="_blank" href="images/trampolino-schematic.png">
+                    <img class="thumbnail" width="150" height="150" src="images/trampolino-schematic-thumb.png" alt="arduino schematic circuit" />
+                </a>
+                <a class="image-popup-no-margins" target="_blank" href="images/arduino-circuit.png">
+                    <img class="thumbnail" width="150" height="150" src="images/arduino-circuit-thumb.png" alt="arduino full breadboard circuit" />
+                </a>
+            </div>
+            <p>
+                The breadboard connections look quite messy, so let's stop
+                looking at that horrible picture and go ahead dissecting each
+                part of the circuit in a step-by-step guide.
+            </p>
+
+            <h3 class="step">Step 1: input push buttons circuit</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step1.png">
+                        <img class="thumbnail" src="images/step1-thumb.png" alt="step1" />
+                </a>
+                <p>
+                    Start by connecting the +5V and GND pins of the Arduino to
+                    the breadboard. Extend these connections to the other side
+                    of the breadboard as shown.  Connect three push button
+                    input circuits. The push buttons are supposed to be far
+                    away from the breadboard, so you would need to connect long
+                    cables to them. In my project
+                    I've used buttons that looks like <a rel="nofollow" href="http://php2.twinner.com.tw/customer/patterson_1/Product/sp6.jpg" target="_blank">this</a>,
+                    and connected each of them to the breadboard though
+                    crocodile wires.
+                </p>
+            </div>
+            <h3 class="step">Step 2: servo motor circuit</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step2.png">
+                    <img class="thumbnail block-center" src="images/step2-thumb.png" alt="step2" />
+                </a>
+                <p>
+                    Connect the servo motor and the capacitor as shown. The
+                    capacitor can fit directly into the breadboard actually (it
+                    looks like that in the picture just for clarity purposes).
+                    Note that <b>the polarity of these connections is important</b>.
+                </p>
+            </div>
+            <h3 class="step">Step 3: liquid passing detection circuit</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step3.png">
+                    <img class="thumbnail block-center" src="images/step3-thumb.png" alt="step3" />
+                </a>
+                <p>
+                    This is our liquid passing detection circuit. The two
+                    floating cables must be soldered or connected somehow to
+                    the wires at the tip of the straw we have prepared at step
+                    4 of the previous section. I have no other particular note
+                    about this step.
+                </p>
+            </div>
+            <h3 class="step">Step 4: liquid passing led (optional)</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step4.png">
+                    <img class="thumbnail block-center" src="images/step4-thumb.png" alt="step4" />
+                </a>
+                <p>
+                    Connect the led we have prepared at step 5 of the previous
+                    section to the breadboard. This step is optional. As you
+                    can see I'm using the pin 13 of the arduino, which is
+                    already connected to a small led on the arduino board. If
+                    you skip this step, you won't have feedback about liquid
+                    passing through the straw at the tip of the straw.
+                </p>
+            </div>
+            <h3 class="step">Step 5: LED display - part 1</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step5.png">
+                    <img class="thumbnail block-center" src="images/step5-thumb.png" alt="step5" />
+                </a>
+                <p>
+                    You don't need to solder 12 wires from the display to the
+                    breadboard if your display has headers. If this is the
+                    case, just plug it on the breadboard as the very last step of
+                    this tutorial.
+                </p>
+            </div>
+            <h3 class="step">Step 6: LED display - part 2</h3>
+            <div class="image-wrapper">
+                <a class="image-popup-no-margins" target="_blank" href="images/step6.png">
+                    <img class="thumbnail block-center" src="images/step6-thumb.png" alt="step6" />
+                </a>
+                <p>
+                    Finish up connecting the display. As you can see, there are 
+                    two mini circuits here.
+                </p>
+                <p>
+                    The potentiometer can be used to tune the backlight of the
+                    led display.
+                </p>
+                <p>
+                    The on/off switch is used to turn on and off the backlight of
+                    the display. I just don't like to have lights on if I'm not
+                    using a device... but if you don't mind you can
+                    connect that resistor directly to +5V and skip the switch
+                    connections entirely.
+                </p>
+                <p>
+                    Note the curve cables at pins 29 and 30 of the breadboard.
+                    They are curve because a display with headers may sit over
+                    them (see previous step).
+                </p>
+            </div>
+            <h3 class="step">End</h3>
+        </section>
+        <section id="software" class="section-margin">
+            <h2>Software</h2>
+            <p>
+                This will be hopefully your less painful step. You can download
+                the source code for the software from the link below.
+            </p>
+            <div class="btn"><a href="https://github.com/darksmo/arduino-trampolino/archive/master.zip">Download Source (.zip)</a></div>
+            <p>
+                Then extract the zip archive and follow the instructions in the README.md file.
+                Feel free to star, fork and contribute to improve Trampolino software via GitHub.
+            </p>
+            <div class="btn"><a href="https://github.com/darksmo/arduino-trampolino">View on GitHub</a></div>
+        </section>
+        <section id="software" class="section-margin">
+            <h2>Let's talk about it</h2>
+            <p>
+                All constructive comments about this project are welcome!
+            </p>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = 'trampolino'; // required: replace example with your forum shortname
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </section>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="js/magnific-popup.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $('.image-popup-no-margins').magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    closeBtnInside: false,
+                    fixedContentPos: true,
+                    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                    image: {
+                        verticalFit: true
+                    },
+                    zoom: {
+                        enabled: true,
+                        duration: 300 // don't foget to change the duration also in CSS
+                    }
+                });
+            });
+        </script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-49743862-5', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
